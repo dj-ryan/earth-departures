@@ -1,14 +1,21 @@
-
+body {
+	background-image: url("336625.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 
 .tick {
 	padding-bottom: 1em;
 	font-size: 1rem;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
 		Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	
 }
 
 .tick-label {
 	font-size: 0.375em;
+	color: #ffffff;
 	text-align: center;
 }
 
@@ -18,4 +25,12 @@
 }
 .tick-credits {
 	display: none;
+}
+
+.title {
+	font-size: 1.5em;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+		Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	color: #ffffff;
+	text-align: center;
 }
