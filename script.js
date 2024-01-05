@@ -14,6 +14,10 @@ async function fetchLaunchData(apiUrl) {
 
 const apiUrl = 'https://fdo.rocketlaunch.live/json/launches/next/5';
 
+
+//https://pqina.nl/flip/
+
+
 function handleTickInit(tick) {
 
 
