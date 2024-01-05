@@ -1,61 +1,53 @@
 
-var t0Date = new Date();
-
-// Function to fetch and parse JSON data
-// async function fetchLaunchData(apiUrl) {
-//     try {
-//         const response = await fetch(apiUrl);
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error('Error fetching data:', error);
-//     }
-// }
+var nextLaunch = new Date();
 
 async function fetchLaunchData(apiUrl) {
-    return new Promise((resolve, reject) => {
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => resolve(data))
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                reject(error);
-            });
-    });
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
 }
+//setTimeout(handleTickInit, 1000);
+
+const apiUrl = 'https://fdo.rocketlaunch.live/json/launches/next/5';
 
 function handleTickInit(tick) {
-    console.log('Tick initialized:', tick);
-    // Initialize the countdown with the new date and time
-    Tick.count.down(t0Date).onupdate = function (value) {
+
+
+
+    // create the countdown counter
+    var counter = Tick.count.down('2025-01-01T00:00:00+01:00');
+
+    counter.onupdate = function (value) {
         tick.value = value;
     };
-}
 
-// URL of the API
-const apiUrl = 'https://fdo.rocketlaunch.live/json/launches/next/5';
+    counter.onended = function () {
+        // redirect, uncomment the next line
+        // window.location = 'my-location.html'
+
+        // hide counter, uncomment the next line
+        // tick.root.style.display = 'none';
+
+        // show message, uncomment the next line
+        // document.querySelector('.tick-onended-message').style.display = '';
+    };
+}
 
 // Fetch and parse JSON data
 fetchLaunchData(apiUrl)
     .then((launchData) => {
         if (launchData.result && launchData.result.length > 0) {
             const t0Value = launchData.result[0].t0;
-            t0Date = new Date(t0Value)
+
+            nextLaunch = new Date(t0Value);
+
             // Now you can use the variable t0Value as needed
-            console.log('Next launch at:', t0Date);
+            console.log('Value of "t0":', nextLaunch);
         } else {
             console.log('No launch data available.');
         }
-        handleTickInit(tick)
-    })
-    .catch(error => {
-        // Handle errors
-        console.error('Error:', error);
     });
-
-
-//fetchLaunchData(apiUrl).then(handleTickInit);
-
-
-
-
