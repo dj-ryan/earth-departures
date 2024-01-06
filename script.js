@@ -57,9 +57,11 @@ fetchLaunchData(apiUrl)
                             root: 'div',
                             repeater: true,
                             layout: 'horizontal center fit',
-                            'data-transform': 'preset(d, h, m, s) -> delay',
+                            //transfrom: 
+                            //transform: 'preset(d, h, m, s) -> delay',
                             
-                            //transform: 'preset(d, h, m, s)',
+
+
                             children: [
                                 // presenter object
                                 {
@@ -71,22 +73,15 @@ fetchLaunchData(apiUrl)
                                             root: 'div',
                                             key: 'value',
                                             repeater: true,
-                                            transform: 'pad(00) -> split -> delay',
+        
                                             children: [
                                                 // presenter object
                                                 {
-                                                    root: 'span',
+                                                    
                                                     view: 'flip'
                                                 }
                                             ]
                                         },
-                                        // presenter object
-                                        {
-                                            root: 'span',
-                                            key: 'label',
-                                            view: 'text',
-                                            class: 'tick-label'
-                                        }
                                     ]
                                 },
                             ]
